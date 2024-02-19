@@ -1,5 +1,5 @@
 {
-    "name": "EchoesOfFire",
+    "name": "PlayerInput",
     "maps": [
         {
             "name": "Player",
@@ -18,6 +18,15 @@
                     "name": "Jump",
                     "type": "Button",
                     "id": "0ca148c5-7b34-465f-bd5d-5fdac34da27d",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Fire",
+                    "type": "Button",
+                    "id": "826cf3de-09b2-4b28-8354-63cceecd2ba6",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -163,8 +172,19 @@
                     "path": "<Keyboard>/space",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Keyboard&Mouse",
                     "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ab2b1cbc-36da-4a98-97c9-0865934ea2c5",
+                    "path": "<Keyboard>/f",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Fire",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

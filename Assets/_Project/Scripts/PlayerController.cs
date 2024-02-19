@@ -8,6 +8,7 @@ namespace DragonspiritGames.EchoesOfFire
     {
         PlayerInput _inputActions;
         bool _isJumping;
+        bool _isBreathingFire;
 
         void OnEnable()
         {
@@ -15,6 +16,8 @@ namespace DragonspiritGames.EchoesOfFire
             _inputActions.Player.Enable();
             _inputActions.Player.Jump.started += JumpStarted;
             _inputActions.Player.Jump.canceled += JumpCanceled;
+            _inputActions.Player.Fire.started += FireStarted;
+            _inputActions.Player.Fire.canceled += FireCancelled;
         }
 
         void OnDisable()
@@ -22,6 +25,8 @@ namespace DragonspiritGames.EchoesOfFire
             _inputActions.Player.Disable();
             _inputActions.Player.Jump.started -= JumpStarted;
             _inputActions.Player.Jump.canceled -= JumpCanceled;
+            _inputActions.Player.Fire.started -= FireStarted;
+            _inputActions.Player.Fire.canceled -= FireCancelled;
             _inputActions = null;
         }
 
@@ -35,9 +40,24 @@ namespace DragonspiritGames.EchoesOfFire
             _isJumping = false;
         }
 
+        void FireStarted(InputAction.CallbackContext context)
+        {
+            _isBreathingFire = true;
+        }
+
+        void FireCancelled(InputAction.CallbackContext context)
+        {
+            _isBreathingFire = false;
+        }
+
         public override bool RetrieveJumpInput(GameObject gameObject)
         {
             return _isJumping;
+        }
+
+        public override bool RetrieveFireInput(GameObject gameObject)
+        {
+            return _isBreathingFire;
         }
 
         public override float RetrieveMoveInput(GameObject gameObject)

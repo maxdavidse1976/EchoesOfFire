@@ -25,21 +25,21 @@ namespace DragonspiritGames.EchoesOfFire
             {
                 AudioManager.Instance.PlayClip(_unknownObjectClip);
             }
-        }
-
-        void OnTriggerEnter2D(Collider2D other)
-        {
-            if (other.CompareTag("Player") && _hasBeenIdentified)
+            else if (_hasBeenIdentified)
             {
                 AudioManager.Instance.PlayClip(_itIsATree);
             }
         }
 
+        public bool HasObjectBeenIdentified()
+        {
+            return _hasBeenIdentified;
+        }
+        
         public void ObjectHasBeenIdentified()
         {
             _spriteRenderer.sprite = _treeSprite;
             _spriteRenderer.color = Color.white;
-            _boxCollider.isTrigger = true;
             _hasBeenIdentified = true;
         }
     }
